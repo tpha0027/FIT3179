@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/netflix.csv"
+        },
+    "hconcat":[
+    {"width": 200,
+    "height":  200,
+    "title": {
+        "text": "Figure 6. NETFLIX's daily added Movies and TV Shows",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "orient":"bottom"},
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field":"date_added",
+            "timeUnit":"day",
+            "type": "ordinal",
+            "title": "Day of the Week"},
+        "y": {
+            "aggregate": "count",
+            "type": "quantitative"
+        },
+        "color": {"field":"type","type": "nominal",
+    "scale":{"range":["#fc8d62","#8da0cb"]}}
+    }},
+    {"width":200,
+    "height": 200,
+    "title": {
+        "text": "Figure 7. NETFLIX's monthly added Movies and TV Shows",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "orient":"bottom"},
+    "params": [
+        {
+            "name": "legend_selection",
+            "select": {"type": "point","fields": ["type"]},
+            "bind": "legend"
+        }
+    ],
+        "transform": [{"filter": {"param": "legend_selection"}}],
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field":"date_added",
+            "timeUnit":"month",
+            "type": "ordinal",
+            "title": "Month of the Year"},
+        "y": {
+            "aggregate": "count",
+            "type": "quantitative"
+        },
+        "color": {"field":"type","type": "nominal",
+    "scale":{"range":["#fc8d62","#8da0cb"]}}
+    }
+}
+]
+}
+

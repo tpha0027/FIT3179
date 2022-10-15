@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/genre_based.csv"
+        },
+    "width": 150,
+    "height":  150,
+    "title": {
+        "text": "Figure 4. Top 10 Popular Genre on NETFLIX",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "orient":"bottom"},
+    "transform": [{
+        "aggregate": [{"op": "count","as": "genre_count"}],
+        "groupby": ["x"]
+    },
+    {"window": [{"op":"rank","as": "rank"}]},
+    {"filter":"datum.rank <= 10"}],
+    "mark": {"type": "bar"},
+    "encoding": {
+        "x": {"field":"x","title":"Genre"},
+        "y": {
+            "field":"genre_count","sort":"descending","axis":{"grid": true}
+        },
+        "color": {"field":"x","type": "nominal","title":"Genre",
+    "scale": {"range":[
+        "#a6cee3",
+        "#1f78b4",
+        "#b2df8a",
+        "#33a02c",
+        "#fb9a99",
+        "#e31a1c",
+        "#fdbf6f",
+        "#ff7f00",
+        "#cab2d6",
+        "#6a3d9a"
+    ]}},
+    "tooltip": [{"field":"x", "title":"Genre type"},
+                {"field":"genre_count", "title":"Total"}]
+    }
+}

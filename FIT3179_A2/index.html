@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <script src="a2.js"></script>
+
+  <title>Netflix Visualisation</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+            }
+    #container {   
+      top:0px;
+      padding-top:0;
+      margin:auto; position:relative;
+      width:950px;
+      height:100%;
+    }  
+    
+    .head1 {
+        font-size:40px;
+        color:#CC0000;
+        font-weight:bold;
+        text-align: center;
+    }
+    .head2 {
+        font-size:17px;
+        margin-left:10px;
+        margin-bottom:15px;
+        text-align: center;
+    }
+    .gr_name {
+        font-size:14px;
+        margin-left:10px;
+        margin-bottom:15px;
+        text-align: center;
+        font-style: italic;
+        font-weight: lighter;
+    }
+    body {
+        margin: 0 auto;
+        background-position:center;
+        background-size: contain;
+        align-items: center;
+    }
+    .body_sec {
+        align-content: center;
+        align-items: center;
+        align-self: center;
+        text-align: center;
+    }
+    .explanation {
+    margin-left: 5px;
+    vertical-align: middle;
+    font-style: italic;
+}
+    .left {
+      float: left;
+      text-align: left;
+      width: 200px;
+      font-size:16px;
+      font-weight: lighter;
+}
+
+    .right {
+      float: right;
+      text-align: left;
+      font-size:16px;
+      font-weight: lighter;
+    }
+
+    .centre {
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size:16px;
+    font-weight: lighter;
+    }
+    .footer {
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-style: italic;
+    font-size:14px;
+    font-weight: lighter;
+    }
+
+</style>
+</head>
+
+<body>
+     <!-- Header Section -->
+     <header>
+      <div class="head1">NETFLIX AROUND THE WORLD<br>
+      (2008-2021)</div>
+      <p class="head2">Author: Thi Ngoc Han Pham 29375053.</p>
+      <p class="head2"><a href="https://www.kaggle.com/datasets/shivamb/netflix-shows">
+          Link to the data set on Kaggle
+        </a></p>
+    </header>
+
+    <!-- Body section -->
+    <div  id="container">
+    <main class = "body_sec">
+      <section id="Content">
+        <h3>
+          <div id="geo_map"></div>
+              <div style="float: left">
+                <div id="pie"></div>
+                  <p class="right">Overall, Total no of Movies are higher than TV Shows.<br>
+                      <br>
+                    Top 5 countries have the highest total no of Movies and TV Shows: <br>
+                    US (2818), India (927), Japan (245), South Korean (199).<br>
+                    <br>
+                    Move mouse to regions on map (Figure 1) for other countries details.
+                  </p>
+          </div>
+          
+          <div style="float:right">
+            <p class="left">Top 5 popular genres:
+              International Movies, Dramas, Comedies, Independent Movies, International TV Shows.
+              <br>
+              Top 5 rating:
+              TV-MA, TV-14, TV-PG, R, PG-13
+              <br>
+              Move mouse between 2 graph (Figure 3 and 4) for other rating and genre details
+            </p>
+            <div id="cir"></div>
+            <div id="ge"></div>
+          </div>
+
+            <div id="year_trend"></div>
+            
+            <p class="centre"> More Movies and TV Shows got added to NETFLIX toward the end of 2019.<br>
+              Yearly trend and Montly trend can be discovered using line chart and area chart from Figure 5. <br>
+              Netflix's trend day for adding both Movies and TV shows is Friday (Figure 6).<br>
+              Most Movies got added during Mar, Jan, and Apr while most TV got 
+              added during Dec, Jul, and Sep (select each legend for detailed bar graph in Figure 7).
+
+
+          <div id="bar"></div>
+
+          <p class="footer">This visualisation was created by Thi Ngoc Han Pham (ID: 29375053)
+             for FIT3179.<br>
+             Licence CC by 4.0.</p>
+        </div>
+        </h3>
+        </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>

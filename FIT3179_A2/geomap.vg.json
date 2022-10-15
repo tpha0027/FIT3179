@@ -1,0 +1,69 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 600,
+    "config": {"view": {"stroke":"transparent"}},
+    "title": {
+        "text": "Figure 1. Total no of Movies and TV Shows cross Countries",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "orient":"bottom"},
+        "projection": {"type": "equalEarth"},
+    "layer": [
+    {
+    "data": {
+    "url": "https://raw.githubusercontent.com/tpha0027/FIT3179/main/js/ne_110m_admin_0_countries.json",
+    "format": {"type": "topojson", "feature":
+    "ne_110m_admin_0_countries"}
+    },
+    "mark": {"type": "geoshape", "fill": "#FFE5CC", "stroke":
+    "grey"}
+    },
+
+    {
+        "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/netflix.csv"
+        },
+        "mark": {"type": "point",
+                "shape": "triangle", 
+                "color": "#FD7914",
+                "tooltip": {"content": "data"}
+    },
+
+    "transform": [{
+        "joinaggregate": [{
+            "op": "count",
+            "field": "type",
+            "as": "TotalMS"
+        }],
+        "groupby": ["country"]
+    }
+],                    
+                    "encoding": {
+                        "longitude": {"field": "longitude", "type":
+                                    "quantitative"},
+                        "latitude": {"field": "latitude", "type":
+                                    "quantitative"},
+                        "size": {
+                        "field": "TotalMS",
+                        "scale":{
+                            "type": "threshold",
+                            "domain": [50,1000,2500],
+                            "range": [80,350,800,2000]
+                                    },
+                    "legend":{
+                            "labelFontSize": 12, "orient": "top-left","fillColor":"aliceblue"},
+                            "title": "No. of Movies and TV Shows"
+                                },
+                    
+                    "tooltip": [
+                            {"field": "country", "type": "nominal", "title": "Country"},
+                            {"field": "type", "aggregate":"count",  "title": "Movies and Shows"}]
+                }}
+        ]
+    
+    }
+
+ 
+    

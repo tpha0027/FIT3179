@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/netflix.csv"
+        },
+    "config": {"view": {"stroke":"transparent"}},
+    "height": 150,
+    "width":150,
+    "transform": [
+        {
+            "aggregate": [
+                {"op": "count","as": "MS"}],
+            "groupby": ["type"]}
+    ],
+    "title": {"text": "Figure 2. Movies vs. TV Shows proportion",
+"fontSize": 12,
+"fontStyle": "italic",
+"orient":"bottom"},
+    
+    "layer": [
+        {
+        "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+      },{
+        "mark": {"type": "text", "radiusOffset": 25,"fontSize":15,"fontWeight":"bold"},
+        "encoding": {
+          "text": {"field": "type", "type": "nominal"}
+        }
+      }
+    ],
+
+"encoding": {
+    "theta": {"field": "MS", "type":"quantitative", "stack": true},
+    "radius": {"field": "MS", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+    "color": {"field": "MS", "type": "nominal", "legend": null,
+                "scale": {"range": ["#e78ac3", "#a6d854"] }},
+    "tooltip": [{"field":"MS", "type": "nominal","title":"Total number"}]}
+}
+
+
+    

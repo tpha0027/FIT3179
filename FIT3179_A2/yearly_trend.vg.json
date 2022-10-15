@@ -1,0 +1,109 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/netflix.csv"
+        },
+        "title": {
+            "text": "Figure 5. Yearly trend on total no of added Movies and TV Shows on NETFLIX",
+            "fontSize": 12,
+            "fontStyle": "italic",
+            "orient":"bottom"},
+    "vconcat":[
+        {
+            "width": 800,
+            "height": 200,
+            "mark": {"type": "line", "color": "#00994C"},
+            "title": {
+                "text": "Use this bar chart to filter the trend overtime",
+                "fontSize": 12},
+            "params": [
+                {
+                    "name": "time_brush",
+                    "select":{"type":"interval","encodings": ["x"]}
+                }
+            ],
+        
+            "encoding": {
+                "x": {
+                    "field": "date_added",
+                    "timeUnit": "yearmonth",
+        
+                    "axis": {"title":"","format": "%Y"}
+                },
+                "y": {
+                    "aggregate": "count",
+                    "axis": {
+                        "title":"Count",
+                        "tickCount":2,
+                        "grid": false}
+                }
+        
+                }
+        },
+        {
+            "width":800,
+            "height": 200,
+            "params": [
+                {
+                    "name": "Type_selection",
+                    "select":{"type": "point","fields": ["type"]},
+                "bind": "legend"}
+            ],
+        
+            "transform": [
+                {
+                    "bin": {"step": 0.5, "extent": [5, 7]},
+                    "field": "type",
+                    "as": "Type"
+                },
+                {"filter":{"param": "Type_selection"}}
+            ],
+            "mark": {
+                "type": "area"
+            },
+            "encoding": {
+                "x":{
+                    "field": "date_added",
+                    "timeUnit": "yearmonth",
+                    "scale":{"domain":{"param": "time_brush"}},
+                    "axis":{"title":"","tickCount":5,"grid": false}
+                },
+                "y":{
+                    "aggregate":"count",
+                    "axis": {
+                        "title":"Count",
+                        "tickCount":3,
+                        "grid": true}
+                    },
+                "color": {
+                    "field": "type", 
+                    "type": "nominal",
+                    "scale":{
+                        "domain": ["Movie","TV Show"],
+                        "range":["#076D70","#FD9D73"]},
+                    "legend":{
+                        "symbolSize":300,
+                        "labelFontSize":12,
+                        "orient": "none",
+                        "direction": "horizontal",
+                        "legendX":10,
+                        "legendY": 250
+                            }}
+                    }
+                
+            }
+        
+        ]
+        
+        }
+
+
+
+
+    
+    
+    
+
+
+    

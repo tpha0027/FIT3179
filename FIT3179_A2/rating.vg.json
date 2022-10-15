@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url":
+        "https://raw.githubusercontent.com/tpha0027/FIT3179/main/data/netflix.csv"
+        },
+    "width": 150,
+    "height":  150,
+    "title": {
+        "text": "Figure 3. Top 10 Rating on NETFLIX",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "orient":"bottom"},
+    "transform": [{
+        "aggregate": [{"op": "count","as": "rating_count"}],
+        "groupby": ["rating"]
+    },
+    {"window": [{"op":"rank","as": "rank"}]},
+    {"filter":"datum.rank <= 10"}],
+    "mark": {"type": "circle","size":300},
+    "encoding": {
+        "x": {"field":"rating"},
+        "y": {
+            "field":"rating_count","sort":"descending"
+        },
+        "color": {"field":"rating","type": "nominal",
+    "scale": {"range":[
+        "#8dd3c7",
+        "#ffffb3",
+        "#bebada",
+        "#fb8072",
+        "#80b1d3",
+        "#fdb462",
+        "#b3de69",
+        "#fccde5",
+        "#d9d9d9",
+        "#bc80bd"
+    ]}},
+    "tooltip": [{"field":"rating", "title":"Rating"},
+                {"field":"rating_count", "title":"Total"}]
+    }
+}
