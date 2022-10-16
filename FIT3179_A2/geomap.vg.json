@@ -4,7 +4,7 @@
     "height": 600,
     "config": {"view": {"stroke":"transparent"}},
     "title": {
-        "text": "Figure 1. Total no of Movies and TV Shows cross Countries",
+        "text": "Figure 1. Total no of Movies and TV Shows across Countries",
         "fontSize": 12,
         "fontStyle": "italic",
         "orient":"bottom"},
