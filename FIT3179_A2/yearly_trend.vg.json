@@ -15,7 +15,7 @@
             "height": 200,
             "mark": {"type": "line", "color": "#00994C"},
             "title": {
-                "text": "Use this bar chart to filter the trend overtime",
+                "text": "Use this chart to filter the trend overtime",
                 "fontSize": 12},
             "params": [
                 {
